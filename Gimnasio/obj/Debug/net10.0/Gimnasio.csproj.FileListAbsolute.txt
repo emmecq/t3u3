@@ -1,0 +1,4 @@
+C:\Users\SrWolfMan_\Documents\C#\Gimnasio\obj\Debug\net10.0\Gimnasio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SrWolfMan_\Documents\C#\Gimnasio\obj\Debug\net10.0\Gimnasio.AssemblyInfoInputs.cache
+C:\Users\SrWolfMan_\Documents\C#\Gimnasio\obj\Debug\net10.0\Gimnasio.AssemblyInfo.cs
+C:\Users\SrWolfMan_\Documents\C#\Gimnasio\obj\Debug\net10.0\Gimnasio.csproj.CoreCompileInputs.cache
