@@ -41,16 +41,26 @@ class Program{
 	/// </summary>
 	static void LeerCliente(out string nombre, out int visitas, out string tipo)
 	{
-		Console.Write("Nombre: ");
+		Console.WriteLine("Nombre: ");
 		nombre = Console.ReadLine()??"";
 
-		Console.Write("Visitas: ");
+		Console.WriteLine("Visitas: ");
 		while(!int.TryParse(Console.ReadLine(), out visitas)){
 			Console.WriteLine("Entrada inválida. Favor reingresar.");
 		}
 
-		Console.Write("Tipo: ");
-		tipo = (Console.ReadLine() ?? "").ToLower();
+		Console.WriteLine("Tipo: ");
+		string entrada;
+
+		do
+		{
+			Console.Write("Tipo (premium/regular): ");
+			entrada = (Console.ReadLine() ?? "").ToLower();
+
+		} while (entrada != "premium" && entrada != "regular");
+
+		tipo = entrada;
+		
 	}
 
 	/// <summary>
