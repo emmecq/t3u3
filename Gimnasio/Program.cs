@@ -50,7 +50,7 @@ class Program{
 		}
 
 		Console.Write("Tipo: ");
-		tipo = Console.ReadLine()??"";
+		tipo = (Console.ReadLine() ?? "").ToLower();
 	}
 
 	/// <summary>
