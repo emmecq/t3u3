@@ -45,7 +45,9 @@ class Program{
 		nombre = Console.ReadLine()??"";
 
 		Console.Write("Visitas: ");
-		visitas = int.Parse(Console.ReadLine()??"");
+		while(!int.TryParse(Console.ReadLine(), out visitas)){
+			Console.WriteLine("Entrada inválida. Favor reingresar.");
+		}
 
 		Console.Write("Tipo: ");
 		tipo = Console.ReadLine()??"";
