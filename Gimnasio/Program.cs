@@ -8,33 +8,27 @@ class Program{
 	/// </summary>
 	/// <param name="n">Cantidad de clientes a procesar.</param>
 	/// <param name="p">Precio base sobre el cual se aplica el descuento.</param>
-	static void Procesar(int n, double p)
-	{
-		double totalAcumulado = 0;
+	static void Procesar(List<string> nombres,
+                         List<int> visitas,
+                         List<string> tipos,
+                         double p)
+    {
+        double totalAcumulado = 0;
         int clientesConDescuento = 0;
 
-        for (int i = 1; i <= n; i++)
+        for (int i = 0; i < nombres.Count; i++)
         {
-            Console.WriteLine($"Cliente {i}:");
-
-            string nombre;
-            int visitas;
-            string tipo;
-
-            LeerCliente(out nombre, out visitas, out tipo);
-
-            double descuento = CalcularDescuento(visitas, tipo);
+            double descuento = CalcularDescuento(visitas[i], tipos[i]);
             double totalFinal = CalcularTotal(p, descuento);
 
             totalAcumulado += totalFinal;
             if (descuento > 0) clientesConDescuento++;
 
-            ImprimirCliente(nombre, totalFinal, descuento);
+            ImprimirCliente(nombres[i], totalFinal, descuento);
         }
 
-		ImprimirResumen(totalAcumulado, clientesConDescuento);
-
-	}
+        ImprimirResumen(totalAcumulado, clientesConDescuento);
+    }
 
 	/// <summary>
 	/// Lee los datos de un cliente desde consola.
