@@ -10,29 +10,30 @@ class Program{
 	/// <param name="p">Precio base sobre el cual se aplica el descuento.</param>
 	static void Procesar(int n, double p)
 	{
-	double x = 0; // global innecesaria (se mantiene por ahora)
-	int c = 0;
+		double totalAcumulado = 0;
+        int clientesConDescuento = 0;
 
-	for (int i = 1; i <= n; i++)
-	{
-		Console.WriteLine($"Cliente {i}:");
+        for (int i = 1; i <= n; i++)
+        {
+            Console.WriteLine($"Cliente {i}:");
 
-		string nombre;
-		int visitas;
-		string tipo;
+            string nombre;
+            int visitas;
+            string tipo;
 
-		LeerCliente(out nombre, out visitas, out tipo);
+            LeerCliente(out nombre, out visitas, out tipo);
 
-		double d = CalcularDescuento(visitas, tipo);
-		double final = CalcularTotal(p, d);
+            double descuento = CalcularDescuento(visitas, tipo);
+            double totalFinal = CalcularTotal(p, descuento);
 
-		x += final;
-		if (d > 0) c++;
+            totalAcumulado += totalFinal;
+            if (descuento > 0) clientesConDescuento++;
 
-		ImprimirCliente(nombre, final, d);
-	}
+            ImprimirCliente(nombre, totalFinal, descuento);
+        }
 
-	ImprimirResumen(x, c);
+		ImprimirResumen(totalAcumulado, clientesConDescuento);
+
 	}
 
 	/// <summary>
@@ -41,13 +42,13 @@ class Program{
 	static void LeerCliente(out string nombre, out int visitas, out string tipo)
 	{
 		Console.Write("Nombre: ");
-		nombre = Console.ReadLine();
+		nombre = Console.ReadLine()??"";
 
 		Console.Write("Visitas: ");
-		visitas = int.Parse(Console.ReadLine());
+		visitas = int.Parse(Console.ReadLine()??"");
 
 		Console.Write("Tipo: ");
-		tipo = Console.ReadLine();
+		tipo = Console.ReadLine()??"";
 	}
 
 	/// <summary>
