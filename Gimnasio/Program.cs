@@ -64,6 +64,38 @@ class Program{
 	}
 
 	/// <summary>
+	/// Lee los datos de múltiples clientes desde consola y los almacena en listas paralelas.
+	/// </summary>
+	/// <param name="n">Cantidad de clientes a leer.</param>
+	/// <param name="nombres">Lista de nombres de los clientes.</param>
+	/// <param name="visitas">Lista de cantidades de visitas de cada cliente.</param>
+	/// <param name="tipos">Lista de tipos de cliente ("premium" o "regular").</param>
+	static void LeerClientes(int n,
+		out List<string> nombres,
+		out List<int> visitas,
+		out List<string> tipos)
+	{
+		nombres = new List<string>();
+		visitas = new List<int>();
+		tipos = new List<string>();
+
+		for (int i = 0; i < n; i++)
+		{
+			Console.WriteLine($"Cliente {i + 1}:");
+
+			string nombre;
+			int visitasCliente;
+			string tipo;
+
+			LeerCliente(out nombre, out visitasCliente, out tipo);
+
+			nombres.Add(nombre);
+			visitas.Add(visitasCliente);
+			tipos.Add(tipo);
+		}
+	}
+
+	/// <summary>
 	/// Calcula el porcentaje de descuento según el tipo de cliente y sus visitas.
 	/// </summary>
 	static double CalcularDescuento(int visitas, string tipo)
