@@ -1,13 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class Program{
 
 	/// <summary>
-	/// Procesa un conjunto de clientes solicitando sus datos por consola,
-	/// calcula el precio final con descuento y muestra un resumen total.
-	/// </summary>
-	/// <param name="n">Cantidad de clientes a procesar.</param>
-	/// <param name="p">Precio base sobre el cual se aplica el descuento.</param>
+    /// Procesa un conjunto de clientes utilizando listas de datos,
+    /// calcula el precio final con descuento y muestra un resumen total.
+    /// </summary>
 	static void Procesar(List<string> nombres,
                          List<int> visitas,
                          List<string> tipos,
@@ -120,7 +119,37 @@ class Program{
 	/// </summary>
 	static void ImprimirResumen(double total, int conDescuento)
 	{
-	Console.WriteLine($"Total: {total:C} | Con descuento: {conDescuento}");
+		Console.WriteLine($"Total: {total:C} | Con descuento: {conDescuento}");
+	}
+
+	/// <summary>
+	/// Punto de entrada del programa. 
+	/// Solicita los datos iniciales, coordina la lectura de clientes
+	/// y ejecuta el procesamiento de la información.
+	/// </summary>
+	static void Main()
+	{
+		int n;
+		Console.Write("Cantidad de clientes: ");
+		while (!int.TryParse(Console.ReadLine(), out n))
+		{
+			Console.WriteLine("Entrada inválida. Favor reingresar.");
+		}
+
+		double precio;
+		Console.Write("Precio base: ");
+		while (!double.TryParse(Console.ReadLine(), out precio))
+		{
+			Console.WriteLine("Entrada inválida. Favor reingresar.");
+		}
+
+		List<string> nombres;
+		List<int> visitas;
+		List<string> tipos;
+
+		LeerClientes(n, out nombres, out visitas, out tipos);
+
+		Procesar(nombres, visitas, tipos, precio);
 	}
 		
 }
